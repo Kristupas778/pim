@@ -1,0 +1,44 @@
+﻿@if (Active)
+{
+    redirectActive = "redirectActive";
+}
+else {
+    Redireccionamiento = "";
+}
+
+@if (CasoEspecial)
+{
+    <div class="contentImagen" id=@redirectActive caso="especial">
+        <a href=@Redireccionamiento >
+            <img src=@DireccionImagen alt=@Contenido>
+            <div class="letras">
+                <div>Password</div>
+                <div>Manager</div>
+            </div>
+        </a>
+        
+    </div>
+}
+else
+{
+    <div class="contentImagen" id=@redirectActive>
+        <a href=@Redireccionamiento>
+            <img src=@DireccionImagen alt=@Contenido>
+            <div class="letras">@Contenido</div>
+
+        </a>
+    </div>
+}
+@code {
+    [Parameter]
+    public string Contenido { get; set; }
+    [Parameter]
+    public string DireccionImagen { get; set; }
+    [Parameter]
+    public string Redireccionamiento { get; set; }
+    [Parameter]
+    public bool CasoEspecial { get; set; }
+    [Parameter]
+    public bool Active { get; set; }
+    string redirectActive = "";
+}

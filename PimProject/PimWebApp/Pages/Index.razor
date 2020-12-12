@@ -1,35 +1,70 @@
 ﻿@page "/"
-
-<h1>Personal Information Manager</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<a href="auth/google-login" class="btn btn-secondary"> Inicia Sesión</a>
-
 <AuthorizeView>
     <Authorized>
-        <h3>
-            hola, @context.User.Identity.Name
-        </h3>
-        @foreach (var item in context.User.Claims)
-        {
-            <h2>
-                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
-                {
-                    string a = "Nombre: ";
-                    @a @item.Value
-                }
-                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
-                {
-                    string a = "Correo: ";
-                    @a @item.Value
-                }
-            </h2>
-        }
-        <img src="@context.User.Claims.Where(s => s.Type == "picture").FirstOrDefault().Value" />
+        <header id="cabecera">
+            <div class="costadoIzq">
+                <div><img src="/imagenes/Home.png" alt="PIM"></div>
+                <div class="title">
+                    <div><span id="titlePIM">PIM</span></div>
+                    <div><span id="titlePersonalI">Personal Information Manager</span></div>
+                </div>
+            </div>
+            <div class="costadoDer">
+                <Perfil></Perfil>
+            </div>
+        </header>
+        <div class="content">
+            <div class="aplicacionesTitle"><h1>YOUR APPLICATIONS</h1></div>
+            <div class="aplicaciones">
+                <div class="imagenenesSup">
+                    <CuadroNavegacion Contenido="Drive" DireccionImagen="/imagenes/driveLogo.png" Redireccionamiento="" Active=true></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Calendar" DireccionImagen="/imagenes/calendarLogo.png" Redireccionamiento="fetchdata" Active=true></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Password Manager" DireccionImagen="/imagenes/passwordLogo.png" Redireccionamiento="" CasoEspecial=true Active=true></CuadroNavegacion>
+
+                </div>
+                <div class="imagenesInferior">
+                    <CuadroNavegacion Contenido="Contacts" DireccionImagen="/imagenes/contactsLogo.png" Redireccionamiento="" Active=true></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Notes" DireccionImagen="/imagenes/notesLogo.png"  Redireccionamiento="notes" Active=true></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="E-Mail" DireccionImagen="/imagenes/emailLogo.png"  Redireccionamiento="" Active=true></CuadroNavegacion>
+                </div>
+            </div>
+        </div>
+     
+        <a href="/Logout">Log out</a>
+
 
     </Authorized>
+    <NotAuthorized>
+        <header id="cabecera">
+            <div class="costadoIzq">
+                <div><img src="/imagenes/Home.png" alt="PIM"></div>
+                <div class="title">
+                    <div><span id="titlePIM">PIM</span></div>
+                    <div><span id="titlePersonalI">Personal Information Manager</span></div>
+                </div>
+            </div>
+            <div class="costadoDer">
+                <a href="auth/google-login" class="btn btn-secondary"> Sync Account</a>
+            </div>
+        </header>
+        <div class="content">
+            <div class="aplicacionesTitle"><h1>YOUR APPLICATIONS</h1></div>
+            <div class="aplicaciones">
+                <div class="imagenenesSup">
+                    <CuadroNavegacion Contenido="Drive" DireccionImagen="/imagenes/driveLogo.png" Redireccionamiento="auth/google-login"></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Calendar" DireccionImagen="/imagenes/calendarLogo.png" Redireccionamiento=""></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Password Manager" DireccionImagen="/imagenes/passwordLogo.png" Redireccionamiento="" CasoEspecial=true></CuadroNavegacion>
+
+                </div>
+                <div class="imagenesInferior">
+                    <CuadroNavegacion Contenido="Contacs" DireccionImagen="/imagenes/contactsLogo.png" Redireccionamiento=""></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="Notes" DireccionImagen="/imagenes/notesLogo.png"  Redireccionamiento=""></CuadroNavegacion>
+                    <CuadroNavegacion Contenido="E-Mail" DireccionImagen="/imagenes/emailLogo.png"  Redireccionamiento=""></CuadroNavegacion>
+                </div>
+            </div>
+        </div>
+
+
+    </NotAuthorized>
 
 </AuthorizeView>

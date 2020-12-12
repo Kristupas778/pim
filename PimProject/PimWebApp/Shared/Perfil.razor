@@ -1,0 +1,25 @@
+﻿<AuthorizeView>
+    <Authorized>
+
+
+        <img id="imagenPerfil" src="@context.User.Claims.Where(s => s.Type == "picture").FirstOrDefault().Value" />
+        @foreach (var item in context.User.Claims)
+        {
+            <h2 id="nombrePerfil">
+                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
+                {
+                    @item.Value
+                }
+                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
+                {
+                    //@item.Value
+                }
+            </h2>
+        }
+
+
+    </Authorized>
+</AuthorizeView>
+@code {
+  
+}

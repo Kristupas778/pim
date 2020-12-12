@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+}
+body {
+    background: white;
+    color: white;
+    font-family: sans-serif;
+}
+header {
+    background:rgb(197, 25, 25);
+    width: 1365px;
+    height: 130px;
+    font-weight:bold; 
+    margin-left: -32px;
+    position:sticky;
+    
+} 
+::-webkit-scrollbar {
+    display: none;
+}
+.costadoIzq div{
+    display: inline-block;
+}
+.title{
+    margin-top: 30px;
+}
+.costadoIzq div img{
+    position: absolute;
+    height: 70px;
+    margin: 25px;
+    margin-top: -20px;
+    border-radius:10px;
+}
+#titlePIM{
+    position:absolute;
+    font-size: 40px;
+    margin-left: 190px;
+    margin-top:-20px;
+}
+#titlePersonalI{
+    position: absolute;
+    padding-top: 5px;
+    font-size: 15px;
+    margin-left: 188px;
+    margin-top: 20px;   
+}
+
+.costadoDer{
+    position: absolute;
+    margin-left: 82%;
+    margin-top: -45px;
+    text-align:center;
+    padding-bottom:-15px;
+   
+}
+.costadoDer a {
+    margin-top:30px;
+    color: white;
+    background-color: rgb(22, 155, 213);
+    font-size: 15px;
+    border-radius: 15px;
+    border: 2px solid white;
+    font-weight: bold;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+}
+
+.content{
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 22%;
+    height: 450px;
+    width: 750px;
+    color: rgb(51, 51, 51);
+    font-weight:bold;
+    box-sizing: content-box;
+}
+.content div div img {
+    height: 95px;
+    filter: grayscale(100%);
+    border-radius:10px;
+}
+.contentImagen a {
+    text-decoration:none;
+}
+.imagenesInferior {
+    margin-top:40px;
+}
+.aplicacionesTitle h1 {
+    font-weight: bold;
+    display: block;
+    font-size: 40px;
+    margin-left: 18%;
+    margin-bottom: 20px;
+}
+.aplicaciones{
+    margin-left: -2%;
+}
+.contentImagen {
+    margin-left:40px;
+    margin-right:40px;
+    padding:10px;
+    display: inline-block;
+    border-radius:10px;
+}
+.letras {
+    color: rgb(178, 186, 187);
+    font-size: 25px;
+    text-align: center;
+}
+[caso="especial"] {
+    position:absolute;
+    margin-top:-5px;
+}
+#imagenPerfil {
+    width:60px;
+    border-radius:150px;  
+ }
+#nombrePerfil {
+    font-size:20px;
+}
+#redirectActive div {
+    color: black;
+   
+}
+#redirectActive a img {
+    filter: grayscale(0);
+}
+#redirectActive a:hover img{
+    height:110px;
+ 
+}
+#redirectActive a:hover .letras {
+    font-weight: bolder;
+}
+#redirectActive:hover {
+    border:1px solid rgb(6, 163, 213);
+    background-color:aliceblue;
+}
+.cabeceraIzq img{
+    height:80px;
+    position:absolute;
+    margin:20px;
+    border-radius:150px;
+}
+.cabeceraMid {
+    position:absolute;
+    margin-top:40px;
+    margin-left:28%;
+   
+}
+#cabeceraPerfil img {
+    margin-top: 50px;
+}
+
+.cabeceraMid a {   
+    padding:20px;
+    background-color:white;
+    margin-left:-5px;
+}
+
+
+

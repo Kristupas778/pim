@@ -22,5 +22,8 @@ namespace PimWebApp
             };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
+      
+    
     }
+
 }
