@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PimWebApp.Interfaz;
+using PimWebApp.Servicios;
 
 namespace PimWebApp
 {
@@ -49,6 +51,9 @@ namespace PimWebApp
 
                 };
             });
+            services.AddScoped<IUsuarioServices, ServicioUsuario>();
+            var cadenaConexionSqlConfiguracion = new SqlConfiguracion(Configuration.GetConnectionString("SQL"));
+            services.AddSingleton(cadenaConexionSqlConfiguracion);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

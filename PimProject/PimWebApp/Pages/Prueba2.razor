@@ -1,0 +1,36 @@
+﻿@page "/prueba2"
+@using PimWebApp.Data
+@using PimWebApp.Interfaz
+@inject IUsuarioServices UsuariosServicio
+
+<h3>Nuevo Usuario</h3>
+
+<EditForm Model="@usuario">
+    <table class="table">
+        <tr>
+            <td>Nombre:</td>
+            <td><input type="text" @bind"cliente.Nombre" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
+                <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Guardar" />
+
+            </td>
+        </tr>
+
+    </table>
+
+</EditForm>
+@code {
+    Usuario usuario = new Usuario();
+
+    protected async Task Guardar()
+    {
+        await UsuariosServicio.GuardarUsuario(usuario);
+    }
+    protected void Cancelar()
+    {
+
+    }
+}
