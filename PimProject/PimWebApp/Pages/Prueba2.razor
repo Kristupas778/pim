@@ -8,13 +8,29 @@
 <EditForm Model="@usuario">
     <table class="table">
         <tr>
-            <td>Nombre:</td>
-            <td><input type="text" @bind"cliente.Nombre" /></td>
+            <td>URL:</td>
+            <td><input type="text" @bind="usuario.Direccion" /></td>
+        </tr>
+        <tr>
+            <td>Usuario:</td>
+            <td><input type="text" @bind="usuario.NombreUsuario" /></td>
+        </tr>
+        <tr>
+            <td>Correo:</td>
+            <td><input type="text" @bind="usuario.Correo" /></td>
+        </tr>
+        <tr>
+            <td>Contraseña:</td>
+            <td><input type="text" @bind="usuario.Contraseña" /></td>
+        </tr>
+        <tr>
+            <td>Nota:</td>
+            <td><input type="text" @bind="usuario.Nota" /></td>
         </tr>
         <tr>
             <td colspan="2">
                 <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
-                <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Guardar" />
+                <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
 
             </td>
         </tr>

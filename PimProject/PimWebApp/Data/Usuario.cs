@@ -9,7 +9,7 @@ namespace PimWebApp.Data
     {
         public int ID { get; set; }
 
-        public string URL { get; set; }
+        public string Direccion { get; set; }
 
         public string NombreUsuario { get; set; }
 
