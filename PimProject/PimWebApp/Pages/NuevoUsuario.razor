@@ -1,0 +1,95 @@
+﻿@page "/NuevoUsuario"
+@using PimWebApp.Data
+@using PimWebApp.Interfaz
+@inject IUsuarioServices UsuariosServicio
+
+<h3 class="NuevoU">Nuevo Usuario</h3>
+
+    <EditForm Model="@usuario">
+        <table class="NuevoU">
+            <tr>
+                <td>URL: </td>
+                <td><input type="text" @bind="usuario.Direccion" /></td>
+            </tr>
+            
+            <tr>
+                <td>Nombre de Usuario: </td>
+                <td><input type="text" @bind="usuario.NombreUsuario" /></td>
+            </tr>
+
+            <tr>
+                <td>Correo: </td>
+                <td><input type="text" @bind="usuario.Correo" /></td>
+            </tr>
+
+            <tr>
+                <td>Contraseña: </td>
+                <td><input type="text" @bind="usuario.Contraseña" /></td>
+            </tr>
+
+            <tr>
+                <td>Nota: </td>
+                <td><input type="text" @bind="usuario.Nota" /></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
+                    <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />                    
+                </td>
+            </tr>
+        </table>
+    </EditForm>
+
+@code {
+    Usuario usuario = new Usuario();
+
+    protected async Task Guardar()
+    {
+        await UsuariosServicio.GuardarUsuario(usuario);
+    }
+    protected void Cancelar()
+    {
+
+    }
+
+    //<DataAnnotationsValidator>
+    /*
+    <div class="row content">
+            <div class="col-md-1"><label for="URL">URL</label></div>
+            <div class="col-md-2"><InputText id="url" @bind-Value="usuario.Direccion" /></div>
+            <div class="col-md-4"><ValidationMessage For="@(()=>usuario.Direccion)" /></div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-1"><label for="Nombre Usuario">Nombre Usuario</label></div>
+            <div class="col-md-2"><InputText id="Nombre Usuario" @bind-Value="usuario.NombreUsuario" /></div>
+            <div class="col-md-4"><ValidationMessage For="@(()=>usuario.NombreUsuario)" /></div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-1"><label for="Correo">Correo</label></div>
+            <div class="col-md-2"><InputText id="correo" @bind-Value="usuario.Correo" /></div>
+            <div class="col-md-4"><ValidationMessage For="@(()=>usuario.Correo)" /></div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-1"><label for="Contraseña">Contraseña</label></div>
+            <div class="col-md-2"><InputText id="contraseña" @bind-Value="usuario.Contraseña" /></div>
+            <div class="col-md-4"><ValidationMessage For="@(()=>usuario.Contraseña)" /></div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-1"><label for="Nota">Nota</label></div>
+            <div class="col-md-2"><InputText id="nota" @bind-Value="usuario.Nota" /></div>
+            <div class="col-md-4"><ValidationMessage For="@(()=>usuario.Nota)" /></div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-1"><input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar"/></div>
+            <div class="col-md-2">
+                <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+            </div>
+        </div>
+    */
+}

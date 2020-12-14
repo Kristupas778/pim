@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PimWebApp.Interfaz;
 using PimWebApp.Servicios;
+using Blazored.Modal;
 
 namespace PimWebApp
 {
@@ -32,6 +33,7 @@ namespace PimWebApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddBlazoredModal();
             services.AddAuthentication("Cookies").AddCookie(opt =>
             {
                 opt.Cookie.Name = "TryingoutGoogleOAuth";

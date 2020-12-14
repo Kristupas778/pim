@@ -9,21 +9,26 @@ namespace PimWebApp.Servicios
 {
     public class ServicioUsuario:IUsuarioServices
     {
-        private SqlUsuario sqlUsuario;
+        private IUsuario iusuario;
         private SqlConfiguracion configuracion;
 
         public ServicioUsuario(SqlConfiguracion c)
         {
             configuracion = c;
-            sqlUsuario = new SqlUsuario(configuracion.CadenaConexion);
+            iusuario = new SqlUsuario(configuracion.CadenaConexion);
         }
 
         public Task<bool> GuardarUsuario(Usuario usuario)
         {
             if (usuario.ID == 0)
-                return sqlUsuario.GuardarUsuario(usuario);
+                return iusuario.GuardarUsuario(usuario);
             else
                 return null;
+        }
+
+        public Task<IEnumerable<Usuario>> ListarTodosLosUsuarios()
+        {
+            return iusuario.ListarTodosLosUsuarios();
         }
     }
 }
