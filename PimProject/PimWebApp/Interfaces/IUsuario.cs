@@ -12,5 +12,11 @@ namespace PimWebApp.Interfaz
         Task<bool> GuardarUsuario(Usuario usuario);
 
         Task<IEnumerable<Usuario>> ListarTodosLosUsuarios();
+
+        Task<Usuario> ListarTodosLosUsuarios(int id);
+
+        Task<bool> ModificarUsuario(Usuario usuario);
+
+
     }
 }

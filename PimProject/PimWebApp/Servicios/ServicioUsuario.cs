@@ -23,12 +23,17 @@ namespace PimWebApp.Servicios
             if (usuario.ID == 0)
                 return iusuario.GuardarUsuario(usuario);
             else
-                return null;
+                return iusuario.ModificarUsuario(usuario);
         }
 
         public Task<IEnumerable<Usuario>> ListarTodosLosUsuarios()
         {
             return iusuario.ListarTodosLosUsuarios();
+        }
+
+        public Task<Usuario> ListarTodosLosUsuarios(int id)
+        {
+            return iusuario.ListarTodosLosUsuarios(id);
         }
     }
 }

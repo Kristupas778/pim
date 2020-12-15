@@ -21,6 +21,7 @@ namespace PimWebApp.Interfaz
         {
             return new SqlConnection(CadenaConexion);
         }
+
         public async Task<bool> GuardarUsuario(Usuario usuario)
         {
             Boolean usuarioCreado = false;
@@ -43,7 +44,8 @@ namespace PimWebApp.Interfaz
                     usuario.Nota= " ";
                 Comm.Parameters.Add("@Nota", SqlDbType.NChar, 50).Value = usuario.Nota;
 
-                await Comm.ExecuteNonQueryAsync();
+                if (usuario.Direccion != null && usuario.NombreUsuario != null && usuario.Correo != null && usuario.Contraseña != null && usuario.Nota != null)
+                    await Comm.ExecuteNonQueryAsync();
                 usuarioCreado = true;
             }
             catch(SqlException ex)
@@ -76,6 +78,7 @@ namespace PimWebApp.Interfaz
                 while (reader.Read())
                 {
                     Usuario u = new Usuario();
+                    u.ID = Convert.ToInt32(reader["ID"]);
                     u.Direccion = reader["Direccion"].ToString();
                     u.NombreUsuario = reader["NombreUsuario"].ToString();
                     u.Correo = reader["Correo"].ToString();
@@ -95,5 +98,83 @@ namespace PimWebApp.Interfaz
             }
             return lista;
         }
+        
+        public async Task<Usuario> ListarTodosLosUsuarios(int id)
+        {
+            Usuario u = new Usuario();
+            SqlConnection sqlConexion = Conexion();
+            SqlCommand Comm = null;
+            try
+            {
+                sqlConexion.Open();
+                Comm = sqlConexion.CreateCommand();
+                Comm.CommandText = "dbo.UsuariosLista";
+                Comm.CommandType = CommandType.StoredProcedure;
+                Comm.Parameters.Add("@ID", SqlDbType.Int).Value = id;
+                SqlDataReader reader = await Comm.ExecuteReaderAsync();
+                while (reader.Read())
+                {
+                    u.ID = Convert.ToInt32(reader["ID"]);
+                    u.Direccion = reader["Direccion"].ToString();
+                    u.NombreUsuario = reader["NombreUsuario"].ToString();
+                    u.Correo = reader["Correo"].ToString();
+                    u.Contraseña = reader["Contraseña"].ToString();
+                    u.Nota = reader["Nota"].ToString();
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error guardando los datos" + ex.Message);
+            }
+            finally
+            {
+                Comm.Dispose();
+            }
+            return u;
+        }
+       
+        public async Task<bool> ModificarUsuario(Usuario usuario)
+        {
+            Boolean usuarioModificado = false;
+            SqlConnection sqlConexion = Conexion();
+            SqlCommand Comm = null;
+
+            try
+            {
+                sqlConexion.Open();
+                Comm = sqlConexion.CreateCommand();
+                Comm.CommandText = "dbo.UsuarioAlta";
+                Comm.CommandType = CommandType.StoredProcedure;
+                Comm.Parameters.Add("@Direccion", SqlDbType.NChar, 500).Value = usuario.Direccion;
+                if (usuario.NombreUsuario == null)
+                    usuario.NombreUsuario = " ";
+                Comm.Parameters.Add("@NombreUsuario", SqlDbType.NChar, 30).Value = usuario.NombreUsuario;
+                Comm.Parameters.Add("@Correo", SqlDbType.NChar, 50).Value = usuario.Correo;
+                Comm.Parameters.Add("@Contraseña", SqlDbType.NChar, 30).Value = usuario.Contraseña;
+                if (usuario.Nota == null)
+                    usuario.Nota = " ";
+                Comm.Parameters.Add("@Nota", SqlDbType.NChar, 50).Value = usuario.Nota;
+                Comm.Parameters.Add("@ID", SqlDbType.Int).Value = usuario.ID;
+
+                if (usuario.Direccion != null && usuario.NombreUsuario != null && usuario.Correo != null && usuario.Contraseña != null && usuario.Nota != null)
+                    await Comm.ExecuteNonQueryAsync();
+                usuarioModificado= true;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error Guardando los datos del usuario" + ex.Message);
+            }
+            finally
+            {
+                Comm.Dispose();
+                sqlConexion.Close();
+                sqlConexion.Dispose();
+            }
+
+            return usuarioModificado;
+
+        }
+
     }
 }
