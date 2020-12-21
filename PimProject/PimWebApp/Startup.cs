@@ -39,7 +39,9 @@ namespace PimWebApp
             {
                 opt.ClientId = Configuration["Google:Id"];
                 opt.ClientSecret = Configuration["Google:Secret"];
+
                 opt.Scope.Add("profile");
+                opt.Scope.Add("https://www.googleapis.com/auth/calendar.readonly");
                 opt.Events.OnCreatingTicket = context =>
                 {
                     string picuri = context.User.GetProperty("picture").GetString();
