@@ -12,6 +12,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+using Google.Contacts;
+using Google.GData.Contacts;
+using Google.GData.Client;
+using Google.GData.Extensions;
+
 namespace PimWebApp
 {
     public class Startup
@@ -34,12 +40,15 @@ namespace PimWebApp
             {
                 opt.Cookie.Name = "TryingoutGoogleOAuth";
                 opt.LoginPath = "/auth/google-login";
+                
+                //opt.Google.Contacts = "email,password";
             })
             .AddGoogle(opt =>
             {
                 opt.ClientId = Configuration["Google:Id"];
                 opt.ClientSecret = Configuration["Google:Secret"];
                 opt.Scope.Add("profile");
+                opt.Scope.Add("contacts.google.com");
                 opt.Events.OnCreatingTicket = context =>
                 {
                     string picuri = context.User.GetProperty("picture").GetString();

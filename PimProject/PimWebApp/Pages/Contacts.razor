@@ -1,0 +1,60 @@
+﻿@page "/Contacts"
+
+<Cabecera></Cabecera>
+
+
+<div class="contenedorContacto">
+
+    <div class="menuIzquierdo">
+        <br />
+        <BotonBuscar></BotonBuscar>
+        <br />
+
+        <ul>
+            <li>
+                <img src="imagenes/contacts/contactoIcono.png" />
+                <a href="/Contacts">Contacts</a>
+            </li>
+            <li>
+                <img src="imagenes/contacts/friendsIcono.png" />
+                <a href="/Contacts">Friends</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="contenidoContacto">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th>Job title & Company</th>
+                    <th>Labels</th>
+                    <th>
+                        <form action="https://contacts.google.com/">
+                            <button class="importarContacto">Importar Contactos</button>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <iframe src="https://contacts.google.com/" width="980" height="500"></iframe>
+
+
+    </div>
+    s
+    
+
+</div>
+
+
+
+
+@code {
+
+}

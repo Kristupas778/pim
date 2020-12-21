@@ -7,13 +7,12 @@ body {
     font-family: sans-serif;
 }
 header {
-    background:rgb(197, 25, 25);
+    background: rgb(197, 25, 25);
     width: 1365px;
     height: 130px;
-    font-weight:bold; 
+    font-weight: bold;
     margin-left: -32px;
-    position:sticky;
-    
+    position: sticky;
 } 
 ::-webkit-scrollbar {
     display: none;
@@ -160,5 +159,171 @@ header {
     margin-left:-5px;
 }
 
+.cabeceraMid a:hover {
+        background-color: #428bca;
+        margin-top: 1;
+        padding-bottom: 20px;
+        border-radius: 1px;
+        color: #fff;
+    }
+
+
+/*Estilos contactos.razor*/
+
+.contenedorContacto {
+    background: white;
+    height:600px;
+    padding: 1px;
+    margin: 2px;
+    display: flex;
+}
+
+.menuIzquierdo {
+    background: white;
+    width: 23%;
+    border-right: 0.1em solid #bbb;
+    display:inline-block;
+}
+
+.menuIzquierdo ul {
+        list-style: none;
+    }
+
+    .menuIzquierdo li {
+        list-style: none;
+        margin-top: 10px;
+        
+    }
+.menuIzquierdo li img{
+    width:20px;
+    height:20px;
+    margin-top:10px;
+    margin-right:30px;
+    margin-left:-20px;
+    margin-bottom:10px;
+}
+#contenidoContacto {
+    background: white;
+    width: 75%;
+  
+    
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+/*Boton buscar*/
+
+form{
+    width:300px;
+    margin:0 auto;
+}
+
+fieldset{
+    display:inline-block;
+    background:#fff;
+    border:1px solid #333;
+    border-radius:5px;
+    padding:0 0 0 40px;
+        
+}
+
+input, button {
+    position: relative;
+    float:left;
+    width: 200px;
+    height: 50px;
+    padding: 0;
+}
+
+
+input{
+    color:#666;
+    border:none;
+    z-index:2;
+ }
+
+button {
+    font-size: 1.4em;
+    width: 50px;
+    border: none;
+    background: #1fb4db;
+    transform: translate(-50px,0);
+    transition-duration: .3s;
+}
+
+fa-search {
+    color: #bbb;
+    transform: translate(-190px,0);
+    transition:all .1s ease-in-out;
+}
+input:focus {
+    outline:none;
+}
+
+input:focus + button{
+    transform:translate(0,0);
+    transition-duration:.3s;
+}
+
+
+input:focus + button .fa {
+    color:#fff;
+    transform: translate(0,0);
+    transition-duration: .5s;
+    }
+
+
+/*Estilos menu contactos*/
+
+.menuIzquierdo li a {
+    font-family: Arial;
+    font-size: 15px;
+    text-decoration: none;
+    float: center;
+    padding: 20px;
+    color: #000;
+    font: bold;        
+}
+
+.menuIzquierdo li:hover {
+    background-color: #e8f0fe;
+    margin-top: 1;
+    padding-bottom: 3px;
+    border-radius: 0 17px 17px 0;
+    color: #65a6e6;
+    border-bottom: 0.1em solid #bbb;
+}
+
+.menuIzquierdo img:hover {
+    filter: invert(0.4) sepia(1) hue-rotate(180deg) saturate(1000%);
+}
+
+.menuIzquierdo a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.menuIzquierdo a:hover, a:focus {
+        background-size: 180% 1px;
+        color: #65a6e6;
+}
+
+.menuIzquierdo a:focus {
+        color: #65a6e6;
+
+    }
+
+
+#contenidoContacto form button{
+    width:60px;
+    height:30px;
+    font-size:10px;
+    border-radius:10px;
+    
+}
 
 
