@@ -1,0 +1,94 @@
+﻿@using System.Threading
+@using PimWebApp.Data
+@using PimWebApp.Interfaz
+@inject IUsuarioServices UsuariosServicio
+@inject NavigationManager navigationManager;
+
+<EditForm Model="@usuario">
+    <table class="NuevoU">
+        <tr>
+            <td>URL: </td>
+            <td><input type="text" @bind="usuario.Direccion" /></td>
+        </tr>
+
+        <tr>
+            <td>Nombre de Usuario: </td>
+            <td><input type="text" @bind="usuario.NombreUsuario" /></td>
+        </tr>
+
+        <tr>
+            <td>Correo: </td>
+            <td><input type="text" @bind="usuario.Correo" /></td>
+        </tr>
+
+        <tr>
+            <td>Contraseña: </td>
+            <td><input type="text" @bind="usuario.Contraseña" /></td>
+        </tr>
+
+        <tr>
+            <td>Nota: </td>
+            <td><input type="text" @bind="usuario.Nota" /></td>
+        </tr>
+        <tr>
+            @if (categoria == null)
+            {
+            }
+            else
+            {
+                <select class="form-control " @bind="usuario.ID_Categoria">
+                    @foreach (Categorias item in categoria)
+                    {
+                        <option value="@item.ID">@item.Nombre</option>
+                    }
+                </select>
+            }
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
+                <input type="button" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+            </td>
+        </tr>
+    </table>
+   
+    </EditForm>
+
+@code {
+
+    Usuario usuario = new Usuario();
+
+    protected async Task Guardar()
+    {
+        await UsuariosServicio.GuardarUsuario(usuario);
+        navigationManager.NavigateTo("/password");
+        F_5();
+    }
+    protected void Cancelar()
+    {
+        navigationManager.NavigateTo("/password");
+    }
+
+    protected void F_5()
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            navigationManager.NavigateTo(navigationManager.Uri, forceLoad: true);
+        }), null, 200, 200);
+    }
+
+    private IEnumerable<Categorias> categoria;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            categoria = await UsuariosServicio.ListarCategorias();
+        }
+        catch
+        {
+            throw;
+        }
+    }
+}

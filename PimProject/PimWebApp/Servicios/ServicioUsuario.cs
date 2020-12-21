@@ -31,9 +31,23 @@ namespace PimWebApp.Servicios
             return iusuario.ListarTodosLosUsuarios();
         }
 
+        public Task<IEnumerable<Categorias>> ListarCategorias()
+        {
+            return iusuario.ListarCategorias();
+        }
+
         public Task<Usuario> ListarTodosLosUsuarios(int id)
         {
             return iusuario.ListarTodosLosUsuarios(id);
+        }
+
+        public Task<bool> BorrarUsuario(int id)
+        {
+            return iusuario.BorrarUsuario(id);
+        }
+        public Task<IEnumerable<Usuario>> ListarTodosLosUsuarios(string cadenaBusqueda) 
+        {
+            return iusuario.ListarTodosLosUsuarios(cadenaBusqueda);
         }
     }
 }

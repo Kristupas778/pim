@@ -1,0 +1,29 @@
+﻿
+<div class="mod">
+    
+        <div @onclick="OpenModal">
+            <img src="@Imagen" />
+
+            <div class="TextoM">
+                <div>@usuario.Direccion </div>
+                <div>@usuario.Correo</div>
+            </div>
+        </div>
+</div>
+
+<VerUsuario IsOpened="isOpened" usuario=@usuario></VerUsuario>
+
+@code {
+    [Parameter]
+    public string Imagen { get; set; }
+    [Parameter]
+    public Usuario usuario { get; set; }
+    [Parameter]
+    public bool isOpened { get; set; }   
+
+    void OpenModal()
+    {
+        isOpened = true;
+    }
+
+}

@@ -24,5 +24,7 @@ namespace PimWebApp.Data
 
         public string Nota { get; set; }
 
+        public int ID_Categoria { get; set; }
+
     }
 }
