@@ -1,34 +1,92 @@
 ﻿@page "/"
 
-<h1>Personal Information Manager</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<a href="auth/google-login" class="btn btn-secondary"> Inicia Sesión</a>
-
 <AuthorizeView>
+    <NotAuthorized>
+
+        <section class="all">
+            <div class="logo">
+                <img src="/images/pim1.jpeg" alt="Logo Principal" style="width:110px;height:80px" ;>
+            </div>
+            <div class="left">
+                <p><b>PIM</b></p>
+                <div class="inf">
+                    <p>Personal Information Manager</p>
+                </div>
+
+            </div>
+
+            <div class="login">
+
+                <a href="auth/google-login" class="btn btn-secondary"> Sync Account</a>
+            </div>
+
+        </section>
+        <section class="Top" id="autorizado">
+            <div class="titulo">  <h1><b>YOUR APPLICATIONS</b></h1> </div>
+            <div class="apps">
+                <div class="sup">
+
+                    <Acciones Nombre="Drive" Imagen="/images/pim2.jpeg"></Acciones>
+                    <Acciones Nombre="Calendar" Imagen="/images/pim2.jpeg"></Acciones>
+                    <Acciones Nombre="Password Manager" Imagen="/images/pim2.jpeg"></Acciones>
+                    
+
+                </div>
+                <div class="bot">
+                    <Acciones Nombre="Contacts" Imagen="/images/pim2.jpeg"></Acciones>
+                    <Acciones Nombre="Notes" Imagen="/images/pim2.jpeg" ></Acciones>
+                    <Acciones Nombre="E-mail" Imagen="/images/pim2.jpeg"></Acciones>
+                </div>
+            </div>
+
+        </section>
+
+    </NotAuthorized>
+
+
     <Authorized>
-        <h3>
-            hola, @context.User.Identity.Name
-        </h3>
-        @foreach (var item in context.User.Claims)
-        {
-            <h2>
-                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
-                {
-                    string a = "Nombre: ";
-                    @a @item.Value
-                }
-                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
-                {
-                    string a = "Correo: ";
-                    @a @item.Value
-                }
-            </h2>
-        }
-        <img src="@context.User.Claims.Where(s => s.Type == "picture").FirstOrDefault().Value" />
+        <section class="all">
+            <div class="logo">
+                <img src="/images/pim1.jpeg" alt="Logo Principal" style="width:110px;height:80px" ;>
+            </div>
+            <div class="left">
+                <p><b>PIM</b></p>
+                <div class="inf">
+                    <p>Personal Information Manager</p>
+                </div>
+
+            </div>
+
+            <div class="login">
+
+                <h3>
+                     @context.User.Identity.Name
+                </h3>
+                <img src="@context.User.Claims.Where(s => s.Type == "picture").FirstOrDefault().Value" />
+            </div>
+
+        </section>
+        <section class="Top">
+            <div class="titulo">  <h1><b>YOUR APPLICATIONS</b></h1> </div>
+            <div class="apps">
+                <div class="sup">
+
+                    <Acciones Nombre="Drive" Imagen="/images/logo1.png" Redireccion=ApiCalendar></Acciones>
+                    <Acciones Nombre="Calendar" Imagen="/images/logo2.png"Redireccion=calendar></Acciones>
+                    <Acciones Nombre="Password Manager" Imagen="/images/logo3.png"></Acciones>
+
+
+                </div>
+                <div class="bot">
+                    <Acciones Nombre="Contacts" Imagen="/images/logo4.png"></Acciones>
+                    <Acciones Nombre="Notes" Imagen="/images/logo5.png"></Acciones>
+                    <Acciones Nombre="E-mail" Imagen="/images/logo6.png"></Acciones>
+
+                </div>
+            </div>
+
+        </section>
+       <a class="out" href="/Out">Logout</a>
 
     </Authorized>
 

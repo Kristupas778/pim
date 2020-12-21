@@ -1,0 +1,17 @@
+﻿
+<div class="log">
+    
+    
+    <a href=@Redireccion>
+        <img src=@Imagen alt=@Nombre>
+        <div class="jr">@Nombre</div>
+    </a>
+</div>
+@code {
+    [Parameter]
+    public string Nombre { get; set; }
+    [Parameter]
+    public string Redireccion { get; set; }
+    [Parameter]
+    public string Imagen { get; set; }
+}
